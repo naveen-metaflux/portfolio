@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naveen Gupi — Data Analyst &amp; BI Developer</title>
+<meta name="description" content="Naveen Gupi — Data Analyst &amp; BI Developer. Power BI, SQL, and healthcare analytics portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-0:#141127;
+    --bg-card:rgba(37,31,74,0.55);
+    --bg-card-solid:#211c42;
+    --border:rgba(167,139,250,0.28);
+    --border-soft:rgba(167,139,250,0.16);
+    --text:#EFEDFC;
+    --text-soft:#BEB8DE;
+    --text-faint:#8A84B3;
+    --grad-btn:linear-gradient(135deg,#6366f1,#a855f7,#ec4899);
+    --grad-blue:linear-gradient(90deg,#93c5fd,#c4b5fd);
+    --grad-purple:linear-gradient(90deg,#c084fc,#f0abfc);
+    --grad-teal:linear-gradient(90deg,#5eead4,#86efac);
+    --grad-pink:linear-gradient(90deg,#f0abfc,#fda4af);
+    --radius:16px;
+    --radius-sm:10px;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--bg-0);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+  img{max-width:100%; display:block;}
+  :focus-visible{outline:2px solid #a855f7; outline-offset:3px;}
+  ul{margin:0; padding:0;}
+
+  /* ---------- ANIMATED BACKGROUND ---------- */
+  .bg-blob{
+    position:fixed; z-index:-1; border-radius:50%;
+    filter:blur(90px); opacity:0.55; pointer-events:none;
+  }
+  .bg-blob.b1{ width:620px; height:620px; top:-180px; left:-160px; background:#4c1d95; animation:float1 22s ease-in-out infinite; }
+  .bg-blob.b2{ width:560px; height:560px; top:20%; right:-200px; background:#9d174d; animation:float2 26s ease-in-out infinite; }
+  .bg-blob.b3{ width:520px; height:520px; bottom:0; left:10%; background:#155e63; animation:float3 24s ease-in-out infinite; }
+  .bg-blob.b4{ width:460px; height:460px; bottom:-160px; right:10%; background:#1e3a8a; animation:float1 20s ease-in-out infinite reverse; }
+  @keyframes float1{ 0%,100%{transform:translate(0,0);} 50%{transform:translate(40px,30px);} }
+  @keyframes float2{ 0%,100%{transform:translate(0,0);} 50%{transform:translate(-50px,20px);} }
+  @keyframes float3{ 0%,100%{transform:translate(0,0);} 50%{transform:translate(30px,-40px);} }
+
+  /* ---------- NAV ---------- */
+  header.nav{ position:sticky; top:0; z-index:50; padding:18px 0; }
+  .nav-inner{
+    max-width:var(--max); margin:0 auto; padding:0 28px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{
+    width:48px; height:48px; border-radius:14px; background:var(--grad-btn);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:17px; color:#fff;
+    text-decoration:none; flex-shrink:0;
+    box-shadow:0 6px 20px rgba(168,85,247,0.35);
+  }
+  nav.links{
+    display:flex; gap:6px; align-items:center;
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--border-soft);
+    border-radius:999px; padding:6px; backdrop-filter:blur(10px);
+  }
+  nav.links a{
+    font-size:14px; font-weight:500; text-decoration:none; color:var(--text-soft);
+    padding:9px 16px; border-radius:999px; transition:background .15s, color .15s;
+    white-space:nowrap;
+  }
+  nav.links a:hover{ background:rgba(255,255,255,0.08); color:#fff; }
+  .btn{
+    font-family:'Inter', sans-serif; font-size:14px; font-weight:600;
+    padding:12px 22px; border-radius:999px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px; white-space:nowrap;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn.primary{ background:var(--grad-btn); color:#fff; box-shadow:0 8px 24px rgba(168,85,247,0.35); }
+  .btn.primary:hover{ transform:translateY(-2px); box-shadow:0 10px 28px rgba(168,85,247,0.5); }
+  .btn.outline{ background:rgba(255,255,255,0.06); border:1px solid var(--border); color:var(--text); }
+  .btn.outline:hover{ background:rgba(255,255,255,0.1); }
+  .navToggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{ padding:56px 0 40px; display:grid; grid-template-columns:1.15fr 0.85fr; gap:40px; align-items:center; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:#c4b5fd;
+    text-transform:uppercase; letter-spacing:0.14em; margin-bottom:16px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:''; width:22px; height:1px; background:#a855f7; }
+  .hero h1{ font-size:clamp(40px,5.4vw,64px); font-weight:700; line-height:1.03; }
+  .hero h1 .grad{
+    background:var(--grad-btn); -webkit-background-clip:text; background-clip:text; color:transparent;
+    display:block;
+  }
+  .hero-role{ margin-top:18px; font-size:19px; font-weight:600; color:#DDD6FE; }
+  .hero-sub{ margin-top:14px; max-width:56ch; color:var(--text-soft); font-size:15.5px; }
+  .hero-cta{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; }
+
+  .hero-photo-wrap{ position:relative; display:flex; align-items:center; justify-content:center; }
+  .hero-photo-glow{
+    position:absolute; width:340px; height:340px; border-radius:50%;
+    background:var(--grad-btn); filter:blur(60px); opacity:0.45;
+  }
+  .hero-photo{
+    position:relative; width:300px; height:300px; border-radius:50%;
+    background:var(--bg-card-solid); border:2px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif; font-weight:700; font-size:72px;
+    color:transparent; background-clip:text; -webkit-background-clip:text;
+    background-image:var(--grad-btn), var(--bg-card-solid);
+  }
+  .hero-photo span{
+    background:var(--grad-btn); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+
+  .vitals{
+    grid-column:1 / -1;
+    margin-top:20px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  .vital{
+    background:var(--bg-card); border:1px solid var(--border-soft); border-radius:var(--radius);
+    padding:20px; backdrop-filter:blur(10px);
+  }
+  .vital .num{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:26px; color:#fff; }
+  .vital .label{ margin-top:6px; font-size:13px; color:var(--text-faint); }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:80px 0; position:relative; }
+  .sec-head{ margin-bottom:40px; max-width:680px; }
+  .sec-head h2{ font-size:clamp(26px,3.4vw,36px); font-weight:700; }
+  .sec-head h2.grad-blue{ background:var(--grad-blue); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sec-head h2.grad-purple{ background:var(--grad-purple); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sec-head h2.grad-teal{ background:var(--grad-teal); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sec-head h2.grad-pink{ background:var(--grad-pink); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sec-head p{ margin-top:12px; color:var(--text-soft); font-size:15.5px; }
+
+  .glass-card{
+    background:var(--bg-card); border:1px solid var(--border-soft); border-radius:var(--radius);
+    backdrop-filter:blur(10px); padding:32px;
+  }
+
+  /* ---------- SKILLS GRID ---------- */
+  .skills-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  .skill-card{
+    background:var(--bg-card); border:1px solid var(--border-soft); border-radius:var(--radius);
+    padding:24px; backdrop-filter:blur(10px);
+  }
+  .skill-card h3{
+    font-size:17px; font-weight:700; margin-bottom:14px;
+    background:var(--grad-blue); -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .skill-card ul{ list-style:none; }
+  .skill-card li{
+    font-size:14px; color:var(--text-soft); padding:5px 0 5px 18px; position:relative;
+  }
+  .skill-card li::before{
+    content:''; position:absolute; left:0; top:13px; width:5px; height:5px; border-radius:50%;
+    background:#a78bfa;
+  }
+
+  /* ---------- WORK / SQL CASE STUDIES ---------- */
+  .case{
+    display:grid; grid-template-columns:1.05fr 1fr; gap:36px; align-items:stretch;
+    background:var(--bg-card); border:1px solid var(--border-soft); border-radius:var(--radius);
+    padding:28px; backdrop-filter:blur(10px); margin-bottom:28px;
+  }
+  .case.reverse{ grid-template-columns:1fr 1.05fr; }
+  .case.reverse .case-media{ order:2; }
+  .case.reverse .case-body{ order:1; }
+  .case-media{ border-radius:var(--radius-sm); overflow:hidden; border:1px solid var(--border-soft); position:relative; }
+  .case-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .case-media .tag{
+    position:absolute; top:12px; left:12px; font-family:'IBM Plex Mono', monospace; font-size:11px;
+    background:rgba(20,17,39,0.85); color:#DDD6FE; padding:4px 9px; border-radius:999px;
+    letter-spacing:0.04em; text-transform:uppercase; border:1px solid var(--border-soft);
+  }
+  .case-body{ display:flex; flex-direction:column; justify-content:center; }
+  .case-role{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:#c4b5fd; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
+  .case-body h3{ font-size:22px; font-weight:700; margin-bottom:10px; color:#fff; }
+  .case-body p{ color:var(--text-soft); font-size:14.5px; margin:0 0 16px; }
+  .kpi-strip{ display:flex; gap:22px; flex-wrap:wrap; margin:14px 0 18px; }
+  .kpi-strip .k .v{ font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:700; color:#fff; display:block; }
+  .kpi-strip .k .l{ font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.05em; }
+  .case-links{ display:flex; gap:12px; flex-wrap:wrap; }
+  .case-links a{
+    font-size:13px; font-weight:600; text-decoration:none; color:#fff;
+    background:rgba(255,255,255,0.08); border:1px solid var(--border);
+    padding:9px 16px; border-radius:999px; transition:background .15s;
+  }
+  .case-links a:hover{ background:rgba(255,255,255,0.15); }
+
+  /* ---------- SQL BLOCKS ---------- */
+  .sql-block{
+    background:var(--bg-card); border:1px solid var(--border-soft); border-radius:var(--radius);
+    margin-bottom:24px; overflow:hidden; backdrop-filter:blur(10px);
+  }
+  .sql-head{ padding:24px 26px; display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:flex-start; }
+  .sql-head h3{ font-size:18px; font-weight:700; margin-bottom:8px; color:#fff; }
+  .sql-head p{ margin:0; color:var(--text-soft); font-size:14px; max-width:58ch; }
+  .badge-row{ display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+  .badge{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; padding:5px 10px; border-radius:999px;
+    background:rgba(167,139,250,0.15); color:#DDD6FE; border:1px solid var(--border-soft);
+  }
+  .badge.pink{ background:rgba(244,114,182,0.15); color:#fbcfe8; }
+  .sql-toggle{
+    font-family:'Inter', sans-serif; font-size:13px; font-weight:600; background:rgba(255,255,255,0.06);
+    border:1px solid var(--border); color:#fff; padding:10px 18px; border-radius:999px; cursor:pointer;
+    flex-shrink:0; transition:background .15s;
+  }
+  .sql-toggle:hover{ background:rgba(255,255,255,0.14); }
+  .sql-body{ max-height:0; overflow:hidden; transition:max-height .35s ease; background:#0f0d20; }
+  .sql-body.open{ max-height:2600px; }
+  .sql-body pre{
+    margin:0; padding:24px 26px; overflow-x:auto;
+    font-family:'IBM Plex Mono', monospace; font-size:12.6px; line-height:1.65; color:#C9C3EE;
+  }
+
+  /* ---------- TIMELINE (Experience + Education) ---------- */
+  .timeline{ position:relative; padding-left:28px; }
+  .timeline::before{
+    content:''; position:absolute; left:5px; top:8px; bottom:8px; width:2px;
+    background:linear-gradient(180deg, #a855f7, #ec4899, #5eead4);
+  }
+  .t-item{ position:relative; margin-bottom:22px; }
+  .t-item::before{
+    content:''; position:absolute; left:-28px; top:26px; width:12px; height:12px; border-radius:50%;
+    background:#ec4899; border:2px solid #1a1533; box-shadow:0 0 0 3px rgba(236,72,153,0.25);
+  }
+  .t-card{
+    background:var(--bg-card); border:1px solid var(--border-soft); border-radius:var(--radius);
+    padding:26px 28px; backdrop-filter:blur(10px);
+  }
+  .t-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+  .t-role{ font-size:19px; font-weight:700; color:#DDD6FE; }
+  .t-org{ font-size:14px; color:var(--text-faint); margin-top:4px; }
+  .t-date{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:#fff;
+    background:rgba(167,139,250,0.18); border:1px solid var(--border); padding:7px 14px; border-radius:999px;
+    white-space:nowrap;
+  }
+  .t-card ul{ list-style:none; margin-top:16px; }
+  .t-card li{ font-size:14px; color:var(--text-soft); padding:5px 0 5px 18px; position:relative; }
+  .t-card li::before{ content:''; position:absolute; left:0; top:13px; width:5px; height:5px; border-radius:50%; background:#5eead4; }
+  .t-tech{ margin-top:14px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-faint); }
+
+  /* ---------- CERTIFICATIONS ---------- */
+  .cert-grid{ display:flex; flex-wrap:wrap; gap:12px; }
+  .cert-pill{
+    display:inline-flex; align-items:center; gap:9px;
+    background:var(--grad-btn); color:#fff; font-weight:600; font-size:14px;
+    padding:12px 20px; border-radius:999px;
+  }
+  .cert-pill.status-progress{ background:linear-gradient(135deg,#0891b2,#0e7490); }
+  .cert-pill.status-target{ background:rgba(255,255,255,0.08); border:1px solid var(--border); color:var(--text-soft); }
+  .cert-dot{ width:7px; height:7px; border-radius:50%; background:#fff; opacity:0.85; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-grid{ display:grid; grid-template-columns:1.3fr 1fr; gap:24px; align-items:start; }
+  .contact-form{
+    background:var(--bg-card); border:1px solid var(--border-soft); border-radius:var(--radius);
+    padding:30px; backdrop-filter:blur(10px);
+  }
+  .form-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .form-field label{ font-size:13px; color:var(--text-soft); display:block; margin-bottom:8px; }
+  .form-field input, .form-field textarea{
+    width:100%; background:rgba(255,255,255,0.05); border:1px solid var(--border-soft);
+    border-radius:var(--radius-sm); padding:12px 14px; color:#fff; font-family:'Inter',sans-serif; font-size:14px;
+  }
+  .form-field input::placeholder, .form-field textarea::placeholder{ color:var(--text-faint); }
+  .form-field textarea{ resize:vertical; min-height:90px; }
+  .form-submit{
+    width:100%; margin-top:6px; background:var(--grad-btn); color:#fff; font-weight:700; font-size:14.5px;
+    border:none; border-radius:999px; padding:14px; cursor:pointer; transition:transform .15s;
+  }
+  .form-submit:hover{ transform:translateY(-2px); }
+
+  .direct-contact{
+    background:var(--bg-card); border:1px solid var(--border-soft); border-radius:var(--radius);
+    padding:26px; backdrop-filter:blur(10px);
+  }
+  .direct-contact > p{ font-size:13px; color:var(--text-faint); margin:0 0 18px; }
+  .direct-contact .dc-title{ font-size:15px; font-weight:700; color:#fff; margin-bottom:4px; }
+  .dc-row{
+    display:flex; align-items:center; gap:14px; padding:14px 12px; border-radius:var(--radius-sm);
+    text-decoration:none; color:inherit; transition:background .15s; margin-bottom:6px;
+  }
+  .dc-row:hover{ background:rgba(255,255,255,0.06); }
+  .dc-icon{
+    width:38px; height:38px; border-radius:50%; background:var(--grad-btn); flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:15px; font-weight:700; color:#fff;
+  }
+  .dc-label{ font-size:14px; font-weight:600; color:#fff; }
+  .dc-sub{ font-size:12.5px; color:var(--text-faint); margin-top:2px; }
+  .dc-arrow{ margin-left:auto; color:var(--text-faint); }
+
+  footer.foot-note{
+    padding:36px 0; text-align:center; font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-faint);
+    border-top:1px solid var(--border-soft);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 980px){
+    .hero{ grid-template-columns:1fr; }
+    .hero-photo-wrap{ order:-1; }
+    .hero-photo, .hero-photo-glow{ width:220px; height:220px; }
+    .skills-grid{ grid-template-columns:1fr 1fr; }
+    .case, .case.reverse{ grid-template-columns:1fr; }
+    .case.reverse .case-media, .case.reverse .case-body{ order:initial; }
+    .contact-grid{ grid-template-columns:1fr; }
+    .vitals{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width: 720px){
+    nav.links{ display:none; }
+    .skills-grid{ grid-template-columns:1fr; }
+    .form-row{ grid-template-columns:1fr; }
+    .t-head{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-blob b1"></div>
+<div class="bg-blob b2"></div>
+<div class="bg-blob b3"></div>
+<div class="bg-blob b4"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">NG</a>
+    <nav class="links">
+      <a href="#top">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#sql">SQL</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn primary" href="assets/Naveen_Gupi_Resume.pdf" download>Download CV</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <div class="hero wrap">
+    <div>
+      <div class="eyebrow">Health IT Data Analyst · BI Developer</div>
+      <h1>NAVEEN<span class="grad">GUPI</span></h1>
+      <div class="hero-role">Data Analyst &amp; BI Developer | Power BI · SQL · Healthcare Analytics</div>
+      <p class="hero-sub">
+        5+ years building Power BI dashboards and production SQL that give clinical, financial, and
+        operational stakeholders a real-time read on performance — from patient risk scoring to
+        executive revenue reporting.
+      </p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#work">View Dashboards</a>
+        <a class="btn outline" href="#contact">Get in Touch</a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-glow"></div>
+      <div class="hero-photo"><span>NG</span></div>
+    </div>
+
+    <div class="vitals">
+      <div class="vital"><div class="num">5+ yrs</div><div class="label">Data, BI &amp; healthcare analytics</div></div>
+      <div class="vital"><div class="num">200+</div><div class="label">Stakeholders served</div></div>
+      <div class="vital"><div class="num">30%</div><div class="label">Faster report cycles</div></div>
+      <div class="vital"><div class="num">20%</div><div class="label">Reporting accuracy gain</div></div>
+    </div>
+  </div>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Professional summary</div>
+        <h2 class="grad-blue">What I bring to the table</h2>
+        <p>Data analysis and BI development focused on clear reporting, clean data, and dashboards leadership actually uses.</p>
+      </div>
+      <div class="glass-card">
+        <p style="margin:0; color:var(--text-soft); font-size:15.5px; line-height:1.85;">
+          Health IT Data Analyst with 5+ years of experience developing operational and executive dashboards,
+          performing quantitative analysis of healthcare data, and delivering data-driven insights that enable
+          leadership to monitor performance, identify trends, and make informed decisions. Proven expertise in
+          Power BI, Tableau, Excel, and SQL with a track record of building recurring and ad hoc reports,
+          validating data quality, and presenting findings to stakeholders. Deep healthcare analytics experience
+          including claims, eligibility, and operational data analysis. Skilled in trend analysis, forecasting,
+          and statistical techniques with strong documentation and business rule standardization practices.
+          US Citizen eligible for DHS Public Trust suitability.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Technical skills</div>
+        <h2 class="grad-purple">Core competencies</h2>
+        <p>Comprehensive expertise across BI development, data analysis, healthcare analytics, and governance.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>BI &amp; Visualization</h3>
+          <ul>
+            <li>Power BI (Desktop, Service, DAX, Power Query)</li>
+            <li>Tableau</li>
+            <li>Dashboard Design</li>
+            <li>Executive Reporting</li>
+            <li>KPI Development</li>
+            <li>Data Storytelling</li>
+            <li>Self-Service Analytics</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Data Analysis &amp; Reporting</h3>
+          <ul>
+            <li>SQL</li>
+            <li>Excel (Advanced, VBA, PivotTables)</li>
+            <li>Quantitative Analysis</li>
+            <li>Trend Analysis &amp; Forecasting</li>
+            <li>Statistical Methods</li>
+            <li>Ad Hoc &amp; Recurring Reporting</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Cloud &amp; Data Platform</h3>
+          <ul>
+            <li>SQL Server</li>
+            <li>Azure SQL Database</li>
+            <li>Azure Databricks</li>
+            <li>Microsoft Fabric</li>
+            <li>Azure Data Factory</li>
+            <li>AWS (S3, EMR, Glue, Lambda)</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Programming &amp; Automation</h3>
+          <ul>
+            <li>Python (Pandas, NumPy, Scikit-learn)</li>
+            <li>PySpark (MLlib)</li>
+            <li>R</li>
+            <li>VBA</li>
+            <li>Git</li>
+            <li>ETL / ELT</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Healthcare Analytics</h3>
+          <ul>
+            <li>Claims Analysis</li>
+            <li>Eligibility Data</li>
+            <li>Provider Directories</li>
+            <li>Clinical Metrics</li>
+            <li>Population Health</li>
+            <li>Operational Performance</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Data Quality &amp; Governance</h3>
+          <ul>
+            <li>Data Validation</li>
+            <li>Anomaly Investigation</li>
+            <li>Root-Cause Analysis</li>
+            <li>Data Quality Frameworks</li>
+            <li>Metadata Documentation</li>
+            <li>Business Rules Standardization</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Security &amp; Compliance</h3>
+          <ul>
+            <li>HIPAA Compliance</li>
+            <li>PHI / PII Governance</li>
+            <li>Row-Level Security</li>
+            <li>Governed Power BI Workspaces</li>
+          </ul>
+        </div>
+        <div class="skill-card">
+          <h3>Stakeholder &amp; Delivery</h3>
+          <ul>
+            <li>Requirements Gathering</li>
+            <li>Executive Presentations</li>
+            <li>Cross-Functional Collaboration</li>
+            <li>Government Stakeholder Communication</li>
+            <li>Agile Delivery</li>
+            <li>Project Documentation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK / POWER BI CASE STUDIES ================= -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Power BI case studies</div>
+        <h2 class="grad-blue">Dashboards built end-to-end</h2>
+        <p>Source data cleanup, star-schema modeling, DAX measures, and a visualization layer designed for a
+          specific decision — not just a data dump.</p>
+      </div>
+
+      <!-- Case 1: Car Sales -->
+      <div class="case">
+        <div class="case-media">
+          <span class="tag">Power BI · Overview</span>
+          <img src="assets/images/car-overview.png" alt="Car Sales Analytics dashboard overview showing total sales, YoY growth, weekly trend, and sales by body style and color">
+        </div>
+        <div class="case-body">
+          <div class="case-role">Automotive Retail Analytics</div>
+          <h3>Car Sales Analytics Dashboard</h3>
+          <p>
+            Dealership sales data was scattered across spreadsheets and legacy tools with no unified view of
+            performance. Built a single interactive Power BI dashboard consolidating transaction-level data
+            into an executive KPI view, plus drill-downs by time, region, body style, and manufacturer.
+          </p>
+          <div class="kpi-strip">
+            <div class="k"><span class="v">$371.19M</span><span class="l">Total sales tracked</span></div>
+            <div class="k"><span class="v">23.59%</span><span class="l">YoY growth</span></div>
+            <div class="k"><span class="v">13.26K</span><span class="l">Units sold YTD</span></div>
+          </div>
+          <div class="case-links">
+            <a href="assets/pbix/Car_sales.pbix" download>Download .pbix</a>
+            <a href="https://github.com/naveen-metaflux/portfolio" target="_blank" rel="noopener">View in GitHub repo →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Case 2: Candy Sales -->
+      <div class="case reverse">
+        <div class="case-media">
+          <span class="tag">Power BI · Executive Summary</span>
+          <img src="assets/images/candy-executive.png" alt="Candy Sales executive KPI bar showing total amount, shipment count, boxes, profit, and margin, with regional and salesperson breakdowns">
+        </div>
+        <div class="case-body">
+          <div class="case-role">CPG Sales &amp; Profitability</div>
+          <h3>Candy Sales Profitability Dashboard</h3>
+          <p>
+            Revenue volume alone was masking a margin problem. Designed a profitability-first dashboard
+            layering cost and margin analysis on top of standard sales reporting, broken out by product,
+            sales team, and geography.
+          </p>
+          <div class="kpi-strip">
+            <div class="k"><span class="v">$141.49M</span><span class="l">Total sales</span></div>
+            <div class="k"><span class="v">57.3%</span><span class="l">Profit margin</span></div>
+            <div class="k"><span class="v">4</span><span class="l">Sales teams benchmarked</span></div>
+          </div>
+          <div class="case-links">
+            <a href="assets/pbix/Candy_Sales.pbix" download>Download .pbix</a>
+            <a href="https://github.com/naveen-metaflux/portfolio" target="_blank" rel="noopener">View in GitHub repo →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SQL SECTION ================= -->
+  <section id="sql">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">SQL problem solving</div>
+        <h2 class="grad-purple">Production-style SQL, not textbook joins</h2>
+        <p>Three query sets written against a modeled healthcare schema. Each ends in a
+          <span class="mono">CREATE OR ALTER VIEW</span> so the output plugs straight into a BI-ready
+          semantic layer. Click a query to expand it.</p>
+      </div>
+
+      <div class="sql-block">
+        <div class="sql-head">
+          <div>
+            <h3>Patient Risk Stratification</h3>
+            <p>Scores each patient 0–6 on blood pressure, heart rate, and 90-day ED utilization, then buckets
+              them into Low / Moderate / High Risk for care-management prioritization.</p>
+            <div class="badge-row">
+              <span class="badge">CTEs (7-stage pipeline)</span>
+              <span class="badge">Window functions</span>
+              <span class="badge">Pivoted vitals (MAX/CASE)</span>
+              <span class="badge pink">Weighted CASE risk scoring</span>
+            </div>
+          </div>
+          <button class="sql-toggle" data-target="sql-1">View Query</button>
+        </div>
+        <div class="sql-body" id="sql-1"><pre>/* 1. Pull patient demographics and diagnoses   */
+
+WITH PatientBase AS (
+    SELECT
+        p.PatientID,
+        p.Age,
+        p.Gender,
+        d.DiagnosisCode,
+        d.DiagnosisDescription,
+        CASE 
+            WHEN d.DiagnosisCode LIKE 'I1%' THEN 'Hypertension'
+            WHEN d.DiagnosisCode LIKE 'E11%' THEN 'Diabetes'
+            WHEN d.DiagnosisCode LIKE 'J4%' THEN 'COPD'
+            ELSE 'Other'
+        END AS ConditionGroup
+    FROM dbo.Patients p
+    LEFT JOIN dbo.PatientDiagnoses d
+        ON p.PatientID = d.PatientID
+),
+
+/* 2. Most recent vitals per patient (BP, HR)    */
+
+Vitals AS (
+    SELECT
+        v.PatientID,
+        v.VitalType,
+        v.VitalValue,
+        v.VitalDate,
+        ROW_NUMBER() OVER (PARTITION BY v.PatientID, v.VitalType ORDER BY v.VitalDate DESC) AS rn
+    FROM dbo.Vitals v
+    WHERE v.VitalType IN ('SystolicBP', 'DiastolicBP', 'HeartRate')
+),
+
+LatestVitals AS (
+    SELECT PatientID, VitalType, VitalValue
+    FROM Vitals
+    WHERE rn = 1
+),
+
+/* 3. Recent ED visits (utilization risk)    */
+
+EDVisits AS (
+    SELECT
+        PatientID,
+        COUNT(*) AS EDVisitCount_Last90Days
+    FROM dbo.Encounters
+    WHERE EncounterType = 'ED'
+      AND VisitDate >= DATEADD(DAY, -90, GETDATE())
+    GROUP BY PatientID
+),
+
+/* 4. Combine vitals into pivoted structure    */
+
+VitalsPivot AS (
+    SELECT
+        PatientID,
+        MAX(CASE WHEN VitalType = 'SystolicBP' THEN VitalValue END) AS SystolicBP,
+        MAX(CASE WHEN VitalType = 'DiastolicBP' THEN VitalValue END) AS DiastolicBP,
+        MAX(CASE WHEN VitalType = 'HeartRate' THEN VitalValue END) AS HeartRate
+    FROM LatestVitals
+    GROUP BY PatientID
+),
+
+/* 5. Risk scoring logic using CASE statements    */
+
+RiskScores AS (
+    SELECT
+        b.PatientID, b.Age, b.Gender, b.ConditionGroup,
+        v.SystolicBP, v.DiastolicBP, v.HeartRate,
+        ISNULL(e.EDVisitCount_Last90Days, 0) AS EDVisitCount_Last90Days,
+
+        CASE 
+            WHEN v.SystolicBP > 160 OR v.DiastolicBP > 100 THEN 2
+            WHEN v.SystolicBP BETWEEN 140 AND 160 THEN 1
+            ELSE 0
+        END AS BloodPressureRisk,
+
+        CASE 
+            WHEN v.HeartRate > 110 THEN 2
+            WHEN v.HeartRate BETWEEN 90 AND 110 THEN 1
+            ELSE 0
+        END AS HeartRateRisk,
+
+        CASE 
+            WHEN ISNULL(e.EDVisitCount_Last90Days, 0) >= 3 THEN 2
+            WHEN ISNULL(e.EDVisitCount_Last90Days, 0) = 2 THEN 1
+            ELSE 0
+        END AS UtilizationRisk
+    FROM PatientBase b
+    LEFT JOIN VitalsPivot v ON b.PatientID = v.PatientID
+    LEFT JOIN EDVisits e ON b.PatientID = e.PatientID
+),
+
+/* 6. Final risk category    */
+
+FinalRisk AS (
+    SELECT *,
+        (BloodPressureRisk + HeartRateRisk + UtilizationRisk) AS TotalRiskScore,
+        CASE 
+            WHEN (BloodPressureRisk + HeartRateRisk + UtilizationRisk) >= 4 THEN 'High Risk'
+            WHEN (BloodPressureRisk + HeartRateRisk + UtilizationRisk) BETWEEN 2 AND 3 THEN 'Moderate Risk'
+            ELSE 'Low Risk'
+        END AS RiskCategory
+    FROM RiskScores
+)
+
+/* 7. Final BI-ready view   */
+
+CREATE OR ALTER VIEW dbo.vw_Clinical_RiskStratification AS
+SELECT
+    PatientID, Age, Gender, ConditionGroup,
+    SystolicBP, DiastolicBP, HeartRate,
+    EDVisitCount_Last90Days, TotalRiskScore, RiskCategory
+FROM FinalRisk;</pre></div>
+      </div>
+
+      <div class="sql-block">
+        <div class="sql-head">
+          <div>
+            <h3>Encounter Cycle Time &amp; Provider Throughput</h3>
+            <p>Validates raw timestamp data, calculates stage-by-stage cycle times (arrival → triage → room →
+              provider → discharge), then ranks providers and clinics on throughput.</p>
+            <div class="badge-row">
+              <span class="badge">Multi-table joins</span>
+              <span class="badge">Data-quality CASE validation</span>
+              <span class="badge">DATEDIFF cycle-time calc</span>
+              <span class="badge pink">RANK() / ROW_NUMBER() ranking</span>
+            </div>
+          </div>
+          <button class="sql-toggle" data-target="sql-2">View Query</button>
+        </div>
+        <div class="sql-body" id="sql-2"><pre>/* 1. Join encounters with provider, clinic, and scheduling data */
+
+WITH BaseData AS (
+    SELECT
+        e.EncounterID, e.PatientID, e.ProviderID, e.ClinicID,
+        e.ArrivalTime, e.TriageStartTime, e.RoomedTime,
+        e.ProviderStartTime, e.DischargeTime,
+        p.ProviderName, c.ClinicName,
+        s.ScheduledStartTime, s.VisitType
+    FROM dbo.EncounterEvents e
+    INNER JOIN dbo.Providers p ON e.ProviderID = p.ProviderID
+    LEFT JOIN dbo.Clinics c ON e.ClinicID = c.ClinicID
+    LEFT JOIN dbo.ProviderSchedule s
+        ON e.ProviderID = s.ProviderID
+        AND CAST(e.ArrivalTime AS DATE) = CAST(s.ScheduledStartTime AS DATE)
+),
+
+/* 2. Data quality validation using CASE logic    */
+
+Validated AS (
+    SELECT *,
+        CASE 
+            WHEN ArrivalTime IS NULL THEN 'Missing Arrival'
+            WHEN TriageStartTime < ArrivalTime THEN 'Invalid Triage Time'
+            WHEN RoomedTime < TriageStartTime THEN 'Invalid Room Time'
+            WHEN ProviderStartTime < RoomedTime THEN 'Invalid Provider Time'
+            WHEN DischargeTime < ProviderStartTime THEN 'Invalid Discharge Time'
+            ELSE 'Valid'
+        END AS DataQualityStatus
+    FROM BaseData
+),
+
+/* 3. Calculate cycle times and LOS   */
+
+CycleTimes AS (
+    SELECT *,
+        CASE WHEN DataQualityStatus = 'Valid'
+            THEN DATEDIFF(MINUTE, ArrivalTime, TriageStartTime) END AS ArrivalToTriage_Min,
+        CASE WHEN DataQualityStatus = 'Valid'
+            THEN DATEDIFF(MINUTE, TriageStartTime, RoomedTime) END AS TriageToRoom_Min,
+        CASE WHEN DataQualityStatus = 'Valid'
+            THEN DATEDIFF(MINUTE, RoomedTime, ProviderStartTime) END AS RoomToProvider_Min,
+        CASE WHEN DataQualityStatus = 'Valid'
+            THEN DATEDIFF(MINUTE, ProviderStartTime, DischargeTime) END AS ProviderToDischarge_Min,
+        CASE WHEN DataQualityStatus = 'Valid'
+            THEN DATEDIFF(MINUTE, ArrivalTime, DischargeTime) END AS TotalLOS_Min
+    FROM Validated
+),
+
+/* 4. Rank encounters and providers using window functions   */
+
+Ranked AS (
+    SELECT *,
+        ROW_NUMBER() OVER (PARTITION BY ProviderID ORDER BY TotalLOS_Min DESC) AS EncounterLOS_RowNum,
+        RANK() OVER (PARTITION BY ClinicID ORDER BY TotalLOS_Min ASC) AS ClinicThroughputRank
+    FROM CycleTimes
+    WHERE DataQualityStatus = 'Valid'
+),
+
+/* 5. Aggregate provider-level KPIs        */
+
+ProviderAgg AS (
+    SELECT
+        ProviderID, ProviderName, ClinicID, ClinicName,
+        COUNT(*) AS TotalEncounters,
+        AVG(TotalLOS_Min) AS AvgLOS_Min,
+        AVG(ArrivalToTriage_Min) AS AvgArrivalToTriage_Min,
+        AVG(RoomToProvider_Min) AS AvgRoomToProvider_Min,
+        AVG(ProviderToDischarge_Min) AS AvgProviderToDischarge_Min,
+        RANK() OVER (ORDER BY AVG(TotalLOS_Min)) AS ProviderPerformanceRank
+    FROM Ranked
+    GROUP BY ProviderID, ProviderName, ClinicID, ClinicName
+)
+
+/* 6. Final BI-ready view    */
+
+CREATE OR ALTER VIEW dbo.vw_Provider_Operational_KPIs AS
+SELECT
+    ProviderID, ProviderName, ClinicID, ClinicName,
+    TotalEncounters, AvgLOS_Min, AvgArrivalToTriage_Min,
+    AvgRoomToProvider_Min, AvgProviderToDischarge_Min, ProviderPerformanceRank
+FROM ProviderAgg;</pre></div>
+      </div>
+
+      <div class="sql-block">
+        <div class="sql-head">
+          <div>
+            <h3>Chronic Medication Compliance</h3>
+            <p>Flags patients on chronic medications (Metformin, Lisinopril, Atorvastatin) as compliant or
+              non-compliant based on whether the right lab test was run within the clinical window, then
+              rolls compliance rate up by medication.</p>
+            <div class="badge-row">
+              <span class="badge">Deduplication via ROW_NUMBER()</span>
+              <span class="badge">Drug-specific CASE logic</span>
+              <span class="badge pink">CAST + NULLIF rate calc</span>
+            </div>
+          </div>
+          <button class="sql-toggle" data-target="sql-3">View Query</button>
+        </div>
+        <div class="sql-body" id="sql-3"><pre>/* 1. Identify active patients on chronic medications   */
+
+WITH ActivePatients AS (
+    SELECT
+        p.PatientID, p.Age, p.Gender,
+        m.MedicationName, m.StartDate, m.EndDate,
+        CASE 
+            WHEN m.EndDate IS NULL OR m.EndDate >= GETDATE() THEN 1
+            ELSE 0
+        END AS IsActiveMedication
+    FROM dbo.PatientMedication m
+    INNER JOIN dbo.Patients p ON m.PatientID = p.PatientID
+    WHERE m.MedicationName IN ('Metformin', 'Lisinopril', 'Atorvastatin')
+),
+
+/* 2. Pull most recent lab results for each patient   */
+
+RecentLabs AS (
+    SELECT
+        l.PatientID, l.LabName, l.LabValue, l.LabDate,
+        ROW_NUMBER() OVER (PARTITION BY l.PatientID, l.LabName ORDER BY l.LabDate DESC) AS rn
+    FROM dbo.LabResults l
+    WHERE l.LabName IN ('A1C', 'Creatinine', 'Lipid Panel')
+),
+
+LatestLabs AS (
+    SELECT PatientID, LabName, LabValue, LabDate
+    FROM RecentLabs
+    WHERE rn = 1
+),
+
+/* 3. Clinical compliance logic using CASE statements   */
+
+Compliance AS (
+    SELECT
+        a.PatientID, a.Age, a.Gender, a.MedicationName, a.IsActiveMedication,
+        l.LabName, l.LabValue, l.LabDate,
+        CASE 
+            WHEN a.MedicationName = 'Metformin' 
+                 AND l.LabName = 'A1C'
+                 AND l.LabDate >= DATEADD(MONTH, -6, GETDATE())
+                THEN 'Compliant'
+            WHEN a.MedicationName = 'Lisinopril'
+                 AND l.LabName = 'Creatinine'
+                 AND l.LabDate >= DATEADD(YEAR, -1, GETDATE())
+                THEN 'Compliant'
+            WHEN a.MedicationName = 'Atorvastatin'
+                 AND l.LabName = 'Lipid Panel'
+                 AND l.LabDate >= DATEADD(YEAR, -1, GETDATE())
+                THEN 'Compliant'
+            ELSE 'Non-Compliant'
+        END AS ComplianceStatus
+    FROM ActivePatients a
+    LEFT JOIN LatestLabs l ON a.PatientID = l.PatientID
+),
+
+/* 4. Aggregate compliance rates by medication     */
+
+MedicationAgg AS (
+    SELECT
+        MedicationName,
+        COUNT(*) AS TotalPatients,
+        SUM(CASE WHEN ComplianceStatus = 'Compliant' THEN 1 ELSE 0 END) AS CompliantPatients,
+        CAST(SUM(CASE WHEN ComplianceStatus = 'Compliant' THEN 1 ELSE 0 END) AS FLOAT)
+            / NULLIF(COUNT(*), 0) AS ComplianceRate
+    FROM Compliance
+    WHERE IsActiveMedication = 1
+    GROUP BY MedicationName
+)
+
+/* 5. Final BI-ready view    */
+
+CREATE OR ALTER VIEW dbo.vw_Clinical_Medication_Compliance AS
+SELECT MedicationName, TotalPatients, CompliantPatients, ComplianceRate
+FROM MedicationAgg;</pre></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Experience</div>
+        <h2 class="grad-teal">Recent impact</h2>
+        <p>Five years across payer, provider, and delivery-partner environments.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-card">
+            <div class="t-head">
+              <div>
+                <div class="t-role">Data Analyst / Azure SQL BI Developer</div>
+                <div class="t-org">BayCare Health System · Tampa, FL · Remote</div>
+              </div>
+              <div class="t-date">May 2025 — Present</div>
+            </div>
+            <ul>
+              <li>Developed 5+ operational and executive Power BI dashboards used by 200+ stakeholders across Finance, Operations, Clinical, and Compliance.</li>
+              <li>Ran quantitative analysis on claims, eligibility, and provider metrics; recurring and ad hoc reporting improved operational efficiency by 25%.</li>
+              <li>Root-caused data integrity issues, improving reporting accuracy by 20% and cutting downstream errors.</li>
+              <li>Built automated data-quality monitoring in Python and SQL, cutting manual validation effort by 15 hrs/week.</li>
+              <li>Implemented row-level security and governed Power BI Service workspaces to maintain HIPAA compliance.</li>
+            </ul>
+            <div class="t-tech">Power BI · Tableau · SQL Server · Azure SQL · Databricks · Microsoft Fabric · ADF · Python · R</div>
+          </div>
+        </div>
+
+        <div class="t-item">
+          <div class="t-card">
+            <div class="t-head">
+              <div>
+                <div class="t-role">Data Analyst / BI Analyst</div>
+                <div class="t-org">Tata Consultancy Services · Hyderabad, India · Remote</div>
+              </div>
+              <div class="t-date">May 2021 — Jul 2023</div>
+            </div>
+            <ul>
+              <li>Mined production data across 5+ source systems (Python, SQL, PySpark) for global healthcare clients.</li>
+              <li>Built predictive statistical models (Python, Spark MLlib) that improved forecast accuracy by 18%.</li>
+              <li>Automated ETL pipelines with AWS Glue and Python for consistent, high-quality reporting datasets.</li>
+              <li>Coordinated onshore/offshore Agile delivery, shipping BI work 15% ahead of deadline on average.</li>
+            </ul>
+            <div class="t-tech">SQL Server · Python (Pandas, NumPy, Scikit-learn) · PySpark · AWS (S3, EMR, Glue, Lambda) · Power BI · Tableau</div>
+          </div>
+        </div>
+
+        <div class="t-item">
+          <div class="t-card">
+            <div class="t-head">
+              <div>
+                <div class="t-role">Data Analyst / Healthcare Analytics Developer</div>
+                <div class="t-org">Insight Talent Solutions · Client: Cigna Healthcare · Hyderabad, India</div>
+              </div>
+              <div class="t-date">Sep 2019 — May 2021</div>
+            </div>
+            <ul>
+              <li>Built 4+ executive dashboards on star-schema data models for a major payer environment.</li>
+              <li>Authored complex SQL for source-to-target validation across sensitive healthcare schemas.</li>
+              <li>Developed forecasting models on patient volume and revenue-cycle data, reaching 92% forecast accuracy.</li>
+            </ul>
+            <div class="t-tech">Power BI · SQL Server · Advanced Excel · Python (Pandas, NumPy) · Azure Data Factory · SSIS · SSRS</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EDUCATION ================= -->
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Education</div>
+        <h2 class="grad-teal">Academic foundation</h2>
+        <p>Strong educational background in computer science and electronics engineering.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-card">
+            <div class="t-head">
+              <div>
+                <div class="t-role">Master of Science, Computer Science</div>
+                <div class="t-org">Florida Atlantic University · Boca Raton, FL</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="t-item">
+          <div class="t-card">
+            <div class="t-head">
+              <div>
+                <div class="t-role">Bachelor of Engineering, Electronics and Communication Engineering</div>
+                <div class="t-org">Chennai Institute of Technology · Chennai, India</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CERTIFICATIONS ================= -->
+  <section id="certifications">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Certifications</div>
+        <h2 class="grad-purple">Industry credentials</h2>
+        <p>Completed, in-progress, and targeted certifications supporting healthcare and BI-focused roles.</p>
+      </div>
+      <div class="glass-card">
+        <div class="cert-grid">
+          <span class="cert-pill"><span class="cert-dot"></span>HIPAA Privacy &amp; Security Compliance</span>
+          <span class="cert-pill"><span class="cert-dot"></span>Data Governance &amp; Quality Management</span>
+          <span class="cert-pill"><span class="cert-dot"></span>Python for Predictive Analytics &amp; Data Science</span>
+          <span class="cert-pill"><span class="cert-dot"></span>Statistical Methods &amp; Data Visualization</span>
+          <span class="cert-pill"><span class="cert-dot"></span>Change Management &amp; UAT Coordination</span>
+          <span class="cert-pill status-progress"><span class="cert-dot"></span>Microsoft Azure Fundamentals (AZ-900) — In Progress</span>
+          <span class="cert-pill status-target">Power Platform Fundamentals (PL-900) — Targeted</span>
+          <span class="cert-pill status-target">Power BI Data Analyst Associate — Targeted</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Let's talk</div>
+        <h2 class="grad-blue">Ready for Data Analyst &amp; BI Developer roles</h2>
+        <p>Continental US, remote-first, open to relocation. Currently exploring federal and health-IT
+          adjacent opportunities where dashboards and SQL actually move a decision.</p>
+      </div>
+
+      <div class="contact-grid">
+        <form class="contact-form" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name *</label>
+              <input id="name" type="text" placeholder="Your name" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Email *</label>
+              <input id="email" type="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-field">
+              <label for="phone">Phone</label>
+              <input id="phone" type="tel" placeholder="+1 (000) 000-0000">
+            </div>
+            <div class="form-field">
+              <label for="message">Message</label>
+              <input id="message" type="text" placeholder="Role, team, or opportunity...">
+            </div>
+          </div>
+          <button class="form-submit" type="submit">Send message</button>
+        </form>
+
+        <div class="direct-contact">
+          <div class="dc-title">Prefer direct contact?</div>
+          <p>Tap to call, email, or connect instantly.</p>
+          <a class="dc-row" href="tel:+15614656601">
+            <span class="dc-icon">☎</span>
+            <span><span class="dc-label">Call / Text</span><br><span class="dc-sub">(561) 465-6601</span></span>
+            <span class="dc-arrow">→</span>
+          </a>
+          <a class="dc-row" href="mailto:naveen.gupi2000@gmail.com">
+            <span class="dc-icon">✉</span>
+            <span><span class="dc-label">Email</span><br><span class="dc-sub">naveen.gupi2000@gmail.com</span></span>
+            <span class="dc-arrow">→</span>
+          </a>
+          <a class="dc-row" href="https://linkedin.com/" target="_blank" rel="noopener">
+            <span class="dc-icon">in</span>
+            <span><span class="dc-label">LinkedIn</span><br><span class="dc-sub">Connect professionally</span></span>
+            <span class="dc-arrow">→</span>
+          </a>
+          <a class="dc-row" href="https://github.com/naveen-metaflux" target="_blank" rel="noopener">
+            <span class="dc-icon">GH</span>
+            <span><span class="dc-label">GitHub</span><br><span class="dc-sub">View Power BI &amp; SQL work</span></span>
+            <span class="dc-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot-note wrap">
+    © 2026 Naveen Gupi · Continental US (Remote) · Open to Relocation
+  </footer>
+
+</main>
+
+<script>
+  document.querySelectorAll('.sql-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var target = document.getElementById(btn.getAttribute('data-target'));
+      var isOpen = target.classList.toggle('open');
+      btn.textContent = isOpen ? 'Hide Query' : 'View Query';
+    });
+  });
+</script>
+
+</body>
+</html>
